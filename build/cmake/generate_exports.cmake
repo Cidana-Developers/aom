@@ -56,5 +56,5 @@ foreach(exported_symbol ${exported_symbols})
 endforeach()
 
 if("${aom_sym_file}" MATCHES "ver$")
-  file(APPEND "${aom_sym_file}" " };")
+  file(APPEND "${aom_sym_file}" "\nlocal: *;\n};")
 endif()
