@@ -2677,6 +2677,7 @@ static const uint8_t *decode_tiles(AV1Decoder *pbi, const uint8_t *data,
       td->bit_reader = &tile_data->bit_reader;
       av1_zero(td->dqcoeff);
       av1_tile_init(&td->xd.tile, cm, row, col);
+      td->xd.current_qindex = cm->base_qindex;
       setup_bool_decoder(tile_bs_buf->data, data_end, tile_bs_buf->size,
                          &cm->error, td->bit_reader, allow_update_cdf);
 #if CONFIG_ACCOUNTING
@@ -2766,6 +2767,7 @@ static int tile_worker_hook(void *arg1, void *arg2) {
       td->bit_reader = &tile_data->bit_reader;
       av1_zero(td->dqcoeff);
       av1_tile_init(&td->xd.tile, cm, tile_row, tile_col);
+      td->xd.current_qindex = cm->base_qindex;
       setup_bool_decoder(tile_buffer->data, thread_data->data_end,
                          tile_buffer->size, &cm->error, td->bit_reader,
                          allow_update_cdf);
