@@ -13,7 +13,7 @@ cmake_minimum_required(VERSION 3.5)
 if(NOT EMSCRIPTEN)
   if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release"
-        CACHE "Build type: Debug, Release, RelWithDebInfo or MinSizeRel" STRING
+        CACHE STRING "Build type: Debug, Release, RelWithDebInfo or MinSizeRel"
               FORCE)
   endif()
 endif()
